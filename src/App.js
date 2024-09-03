@@ -1,5 +1,3 @@
-
-import './App.css';
 import Quiz from './components/Quiz';
 
 function App() {

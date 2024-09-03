@@ -59,16 +59,16 @@ const Quiz = () => {
   };
 
   return (
-    <div className="quiz-container p-4">
+    <div className="quiz-container min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-purple-500 to-indigo-500 text-white p-8">
       {!quizStarted ? (
         <StartScreen onStart={handleStart} />
       ) : showScore ? (
-        <div className="text-center">
+        <div className="text-center flex flex-col items-center">
           <Score score={score} totalQuestions={questions.length} />
           <p className="text-xl mt-4">Good job, {name}!</p>
           <button
             onClick={handleRestart}
-            className="restart-btn mt-4 p-2 bg-blue-500 text-white rounded hover:bg-green-400"
+            className="mt-6 p-3 bg-pink-500 text-white rounded-full shadow-lg hover:bg-pink-600 transition duration-300"
           >
             Restart Quiz
           </button>
@@ -76,10 +76,12 @@ const Quiz = () => {
       ) : (
         <>
           <Timer onTimeUp={handleTimeUp} />
-          <Question
-            question={questions[currentQuestion]}
-            onAnswerClick={handleAnswerOptionClick}
-          />
+          <div className="flex flex-col items-center bg-white text-gray-900 p-6 rounded-lg shadow-lg max-w-xl w-full">
+            <Question
+              question={questions[currentQuestion]}
+              onAnswerClick={handleAnswerOptionClick}
+            />
+          </div>
         </>
       )}
     </div>
